@@ -268,16 +268,16 @@ example I don't need console setup, because that's just responsible for fonts si
 Create a script: `nano update.sh`
 
 `#!/bin/bash
-sudo apt-get update -y >> /var/log/update.log
-sudo apt-get upgrade -y >> /var/log/update.log`
+sudo apt update -y >> /var/log/update.log
+sudo apt upgrade -y >> /var/log/update.log`
 
 Give it permissions: `sudo chmod 755 update.sh` 755 means read and execute access for everyone and also write access for the owner of the file.
 
 To automate execution, we must edit the crontab file: `sudo crontab -e` To which we add the lines:
 
 ```
-0 4 * * 0 sudo ~scripts/update.sh
-@reboot sudo ~/scripts/update.sh
+0 4 * * 0 sudo /etc/update.sh
+@reboot sudo /etc/update.sh
 ```
 
 This execute script every Sunday 4AM and when reboot
